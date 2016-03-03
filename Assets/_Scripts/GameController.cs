@@ -96,7 +96,7 @@ public class GameController : MonoBehaviour {
         //this.ScoreLabel.gameObject.SetActive(false);
         //this.HighScoreLabel.gameObject.SetActive(true);
         //this.HighScoreLabel.text = "High Score: " + this._scoreValue;
-        //this._gameOverSound.Play();
+        this._gameOverSound.Play();
         this.RestartButton.gameObject.SetActive(true);
     }
 

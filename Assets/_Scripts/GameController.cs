@@ -14,8 +14,9 @@ public class GameController : MonoBehaviour {
 
     public Text LivesLabel;
     public Text ScoreLabel;
-
-
+    public Button RestartButton;
+    public Text GameOverLabel;
+    public PlayerController player;
 
 
     [SerializeField]
@@ -45,9 +46,9 @@ public class GameController : MonoBehaviour {
         set
         {
             this._livesValue = value;
-            if (this._livesValue <= 0)
+            if (this._livesValue < 0)
             {
-                //this._endGame();
+                
                 this._endGame();
             }
             else
@@ -78,7 +79,7 @@ public class GameController : MonoBehaviour {
 
         //this.GameOverLabel.gameObject.SetActive(false);
         //this.HighScoreLabel.gameObject.SetActive(false);
-        //this.RestartButton.gameObject.SetActive(false);
+        this.RestartButton.gameObject.SetActive(false);
 		for (int count=0; count < this.tankCount; count++) {
 			Instantiate(tank);
 		}
@@ -89,17 +90,20 @@ public class GameController : MonoBehaviour {
     private void _endGame()
     {
         //this.GameOverLabel.gameObject.SetActive(true);
-        //this.player.gameObject.SetActive(false);
+        this.player.gameObject.SetActive(false);
         //this.coin.gameObject.SetActive(false);
         //this.LivesLabel.gameObject.SetActive(false);
         //this.ScoreLabel.gameObject.SetActive(false);
         //this.HighScoreLabel.gameObject.SetActive(true);
         //this.HighScoreLabel.text = "High Score: " + this._scoreValue;
         //this._gameOverSound.Play();
-        //this.RestartButton.gameObject.SetActive(true);
+        this.RestartButton.gameObject.SetActive(true);
     }
 
-
+    public void RestartButtonClick()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 
 }
